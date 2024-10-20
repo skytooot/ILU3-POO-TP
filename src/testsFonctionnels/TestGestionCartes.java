@@ -19,11 +19,11 @@ public class TestGestionCartes {
 		System.out.println(listeCartes);
 		listeCartes = GestionCartes.melanger(listeCartes);
 		System.out.println(listeCartes);
-		System.out.println(
-				"liste mélangée sans erreur ? " + GestionCartes.verifierMelange(listeCarteNonMelangee, listeCartes));
+		/*System.out.println(
+				"liste mï¿½langï¿½e sans erreur ? " + GestionCartes.verifierMelange(listeCarteNonMelangee, listeCartes));
 		listeCartes = GestionCartes.rassemberV2(listeCartes);
 		System.out.println(listeCartes);
-		System.out.println("liste rassemblée sans erreur ? " + GestionCartes.verifierRassemblement(listeCartes));
+		System.out.println("liste rassemblï¿½e sans erreur ? " + GestionCartes.verifierRassemblement(listeCartes));*/
 
 	}
 

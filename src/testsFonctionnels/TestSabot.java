@@ -13,7 +13,7 @@ public class TestSabot {
 
 	// 4.2.a
 	public void questionA() {
-
+		
 		while (!sabot.estVide()) {
 			Carte carte = sabot.piocher();
 			System.out.println("Je pioche " + carte);
@@ -22,9 +22,9 @@ public class TestSabot {
 //		Je pioche Accident
 //		Je pioche Accident
 //		Je pioche Accident
-//		Je pioche Réparation
-//		Je pioche Réparation
-//		Je pioche Réparation
+//		Je pioche Rï¿½paration
+//		Je pioche Rï¿½paration
+//		Je pioche Rï¿½paration
 //		Je pioche As du volant
 	}
 
@@ -55,7 +55,7 @@ public class TestSabot {
 		TestSabot testPioche = new TestSabot();
 //		testPioche.questionA();
 //		testPioche.questionB();
-//		testPioche.questionC();
+		testPioche.questionC();
 	}
 
 }

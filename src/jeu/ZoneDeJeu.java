@@ -14,4 +14,23 @@ public class ZoneDeJeu {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int donnerLimitationVitesse() {
+		if(pileDeLimites.isEmpty() || 
+				pileDeLimites.get(pileDeLimites.size()).toString() == "Fin Limite") {
+			return 200;
+		}
+		else {
+			return 50;
+		}
+	}
+	
+	public int donnerKmParcourus() {
+		int km = 0;
+		for(int i =0; i<pileDeBornes.size();i++)km+=pileDeBornes.get(i).getKm();
+		return km;
+	}
+	
+	public void deposer(Carte carte) {
+		
+	}
 }

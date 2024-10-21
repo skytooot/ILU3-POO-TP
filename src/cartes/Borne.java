@@ -7,8 +7,11 @@ public class Borne extends Carte {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return km+"KM";
+	}
+	
+	public int getKm() {
+		return km;
 	}
 	
 	public boolean equals(Object objet) {

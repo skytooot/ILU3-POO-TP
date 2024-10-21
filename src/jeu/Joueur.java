@@ -5,7 +5,7 @@ import cartes.*;
 public class Joueur {
 	private String nom;
 	private ZoneDeJeu zoneDeJeu;
-	private MainJoueur main;
+	private MainJoueur main = new MainJoueur();
 
 	public Joueur(String nom,ZoneDeJeu zoneDeJeu) {
 		this.nom = nom;
@@ -25,6 +25,19 @@ public class Joueur {
 		return false;
 	}
 	
+	public void donner(Carte carte) {
+		main.prendre(carte);
+	}
 	
-
+	public Carte prendreCarte(Sabot sabot) {
+		if(sabot.estVide())
+			return null;
+		Carte carte = sabot.piocher();
+		donner(carte);
+		return carte;
+	}
+	
+	public int donnerKmParcourus() {
+		return zoneDeJeu.donnerKmParcourus();
+	}
 }

@@ -47,6 +47,7 @@ public class GestionCartes {
 	}
 	
 	/*public static boolean verifierRassemblement(List<Carte> liste) {
+		
 		for (Iterator<Carte> iterator1 = liste.iterator(); iterator1.hasNext();) {
 			
 		}

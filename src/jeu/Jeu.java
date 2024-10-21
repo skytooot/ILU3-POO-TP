@@ -14,8 +14,12 @@ public class Jeu {
 		List<Carte> listeCartes = new ArrayList<>();
 		Collections.addAll(listeCartes,JeuDeCartes);
 		listeCartes = GestionCartes.melanger(listeCartes);
-		Carte[] tab = (Carte[]) listeCartes.toArray();
-		this.sabot = new Sabot(tab);
+		Carte[] cartes =listeCartes.toArray(new Carte[0]);
+		this.sabot = new Sabot(cartes);
+	}
+	
+	public Sabot getSabot() {
+		return sabot;
 	}
 
 }

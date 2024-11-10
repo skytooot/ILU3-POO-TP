@@ -1,5 +1,6 @@
 package jeu;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,13 +10,21 @@ public class ZoneDeJeu {
 	private List<Limite> pileDeLimites= new LinkedList<>();
 	private List<Bataille> pileBataille= new LinkedList<>();
 	private List<Borne> pileDeBornes= new LinkedList<>();
-	
+	private HashSet<Botte> bottes = new HashSet<>();
+	 
 	public ZoneDeJeu() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public boolean estPrioritaire() {
+		System.out.println("/// FONCTION : estPrioritaire : "+ bottes.contains(new Botte(Type.FEU))+(new Botte(Type.FEU)).hashCode());
+		if(bottes.contains(new Botte(Type.FEU)))return true;
+		
+		return false;
+	}
 
 	public int donnerLimitationVitesse() {
-		if(pileDeLimites.isEmpty() || 
+		if(estPrioritaire() ||pileDeLimites.isEmpty() || 
 				pileDeLimites.get(pileDeLimites.size()-1).toString() == "Fin Limite") {
 			return 200;
 		}
@@ -40,10 +49,20 @@ public class ZoneDeJeu {
 		if(carte instanceof Bataille  ) {
 			pileBataille.add((Bataille) carte);
 		}
+		if(carte instanceof Botte) {
+			bottes.add((Botte) carte);
+		}
 	}
 	
+	
+	
 	public boolean peutAvancer() {
-		return (!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1).toString()=="FeuVert");
+		return ((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1).toString()=="FeuVert"))
+				||(pileBataille.isEmpty()&&estPrioritaire())
+				||((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1) instanceof Parade)&&estPrioritaire())
+				||((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1) instanceof Attaque)
+						&&(pileBataille.get(pileBataille.size()-1).getType() == Type.FEU) &&estPrioritaire())
+				;
 	}
 	
 	private boolean estDepotFeuVertAutorise() {
@@ -66,6 +85,7 @@ public class ZoneDeJeu {
 	}
 	
 	private boolean estDepotLimiteAutorise(Limite limite) {
+		if(estPrioritaire()) return false;
 		if(limite.toString() != "Fin Limite" &&(pileDeLimites.isEmpty() || 
 				pileDeLimites.get(pileDeLimites.size()-1).toString() == "Fin Limite"))
 			return true;
@@ -96,7 +116,13 @@ public class ZoneDeJeu {
 		if(carte instanceof Bataille  ) {
 			return  estDepotBatailleAutorise( (Bataille) carte);
 		}
+		if(carte instanceof Botte  ) {
+			return  true;
+		}
 		return false;
 	}
+	
+	
+	
 	
 }

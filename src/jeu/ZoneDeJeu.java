@@ -17,8 +17,7 @@ public class ZoneDeJeu {
 	}
 	
 	public boolean estPrioritaire() {
-		System.out.println("/// FONCTION : estPrioritaire : "+ bottes.contains(new Botte(Type.FEU))+(new Botte(Type.FEU)).hashCode());
-		if(bottes.contains(new Botte(Type.FEU)))return true;
+		if(bottes.contains(Botte.VEHICULE_PRIORITAIRE))return true;
 		
 		return false;
 	}

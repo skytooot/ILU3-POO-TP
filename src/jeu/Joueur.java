@@ -1,5 +1,8 @@
 package jeu;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import cartes.*;
 
 public class Joueur {
@@ -40,4 +43,6 @@ public class Joueur {
 	public int donnerKmParcourus() {
 		return zoneDeJeu.donnerKmParcourus();
 	}
+	
+
 }

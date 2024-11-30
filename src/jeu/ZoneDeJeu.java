@@ -17,7 +17,7 @@ public class ZoneDeJeu {
 	}
 	
 	public boolean estPrioritaire() {
-		if(bottes.contains(Botte.VEHICULE_PRIORITAIRE))return true;
+		if(bottes.contains(Cartes.PRIORITAIRE))return true;
 		
 		return false;
 	}
@@ -56,13 +56,15 @@ public class ZoneDeJeu {
 	
 	
 	public boolean peutAvancer() {
-		return ((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1).toString()=="FeuVert"))
-				||(pileBataille.isEmpty()&&estPrioritaire())
+		return ((pileBataille.isEmpty()&&estPrioritaire())	
+				||(!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1)== Cartes.FEU_VERT))
 				||((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1) instanceof Parade)&&estPrioritaire())
 				||((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1) instanceof Attaque)
 						&&(pileBataille.get(pileBataille.size()-1).getType() == Type.FEU) &&estPrioritaire())
+				||((!pileBataille.isEmpty())&&(pileBataille.get(pileBataille.size()-1) instanceof Attaque)
+						&&(bottes.contains(new Botte(pileBataille.get(pileBataille.size()-1).getType()))) &&estPrioritaire())
 				;
-	}
+	} 
 	
 	private boolean estDepotFeuVertAutorise() {
 		return (pileBataille.isEmpty())
